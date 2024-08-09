@@ -1,0 +1,95 @@
+:root {
+    --background: #4F4A45;
+    --primary: #1e90ff;
+    --primary-text: #EADBC8;
+    --secondary: #ffffff;
+    --secondary-text: #ffffff;
+
+    --width-mobile: 400px;
+  }
+
+body{
+    background: var(--background);
+    color: var(--primary-text);
+    overflow-y: auto;
+    height: auto;
+
+font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+a{
+    color: #EADBC8;
+}
+.card{
+    background: linear-gradient(
+       to left,#ED7D31 ,#e7640c
+    );
+    color: #EADBC8;
+    box-shadow: 5px 5px 5px 0 #3c3832ac;
+    padding: 5px;
+}
+
+.store-name{
+    color: #4F4A45;
+}
+.ratingDiv{
+    
+   
+}
+.ratingDiv > p{
+    font-size: 2.5em;
+    padding: 5px;
+    background: #4F4A45;
+    color: #ED7D31;
+    border-radius: 5px;
+    
+    
+}
+
+.cardThumbnail{
+    border: #ED7D31 solid 1px;
+    box-shadow: 3px 3px 3px #4F4A45;
+}
+
+.navBar{
+    display: inline-flex;
+    justify-content:left;
+    width: 100%;
+    list-style: none;
+    padding-left: 0;
+    
+}
+
+.music-player{
+    background-color: #6C5F5B;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 90%;
+            text-align: center;
+            margin: 5px;
+}
+.music-player > audio{
+    width: 100%;
+    
+}
+.navBar > li{
+    border: #EADBC8 solid 1px;
+    flex: 1;
+    height: 100%;
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+}
+/*List*/
+.list-item{
+    list-style: none;
+}
+
+*, *::before, *::after {
+    box-sizing:content-box;
+}
+
