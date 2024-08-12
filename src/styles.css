@@ -17,7 +17,6 @@ body{
 font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-  font-size: 1.2em;
   text-transform: uppercase;
 }
 a{
@@ -25,7 +24,7 @@ a{
 }
 .card{
     background: linear-gradient(
-       to left,#ED7D31 ,#e7640c
+       to left,#f08b48 ,#e7640c
     );
     color: #EADBC8;
     box-shadow: 5px 5px 5px 0 #3c3832ac;
@@ -41,7 +40,7 @@ a{
 }
 .ratingDiv > p{
     font-size: 2.5em;
-    padding: 5px;
+    padding: 5px 15px 5px 15px;
     background: #4F4A45;
     color: #ED7D31;
     border-radius: 5px;
@@ -52,6 +51,10 @@ a{
 .cardThumbnail{
     border: #ED7D31 solid 1px;
     box-shadow: 3px 3px 3px #4F4A45;
+}
+
+.addressBox{
+    margin: 0 5px 0 5px;
 }
 
 .navBar{
@@ -89,6 +92,40 @@ a{
     list-style: none;
 }
 
+.rating-store-page{
+    font-size: 2em;
+}
+
+/*Store Page Styles */
+.store-image-div { 
+    width: 30%; 
+    background-color: #6C5F5B;
+    margin: 3%; 
+    border: 1px solid #fff; 
+} 
+
+.store-image-txt { 
+    text-align: center; 
+    padding: 10px; 
+} 
+.drink-list{
+    
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.drinks-list-item{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    background-color: #4F4A45;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+}
+.drinks-list-item:nth-child(odd){
+    background-color: #6C5F5B;
+}
 *, *::before, *::after {
     box-sizing:content-box;
 }

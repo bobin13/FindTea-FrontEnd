@@ -14,21 +14,23 @@ const BASE_URL = " http://localhost:5081/api/Store";
 const SearchPanel = () => {
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const [val, setVal] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const [stores, setStores] = useState<Store[]>([]);
-  const [page, setPage] = useState(0);
 
   const abortControllerRef = useRef<AbortController | null>(null);
 
   async function Search() {
-    console.log(val);
+    console.log(searchValue);
     abortControllerRef.current?.abort();
     abortControllerRef.current = new AbortController();
 
     try {
-      const response = await fetch(`${BASE_URL}/find?cityQuery=${val}`, {
-        signal: abortControllerRef.current?.signal,
-      });
+      const response = await fetch(
+        `${BASE_URL}/find?cityQuery=${searchValue}`,
+        {
+          signal: abortControllerRef.current?.signal,
+        }
+      );
       const stores = await response.json();
       setStores(stores);
       console.log(stores);
@@ -48,19 +50,19 @@ const SearchPanel = () => {
   }
 
   if (error) {
-    return <img src="assets/error_shibu.png"></img>;
+    return <img className="col-12" src="src/assets/error_shibu.jpeg"></img>;
   }
 
   //search button press event handler
   const handleSearch = () => {
-    if (val !== "") {
+    if (searchValue !== "") {
       console.log("Searching!");
       Search();
     }
   };
 
   const inputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setVal(event.target.value);
+    setSearchValue(event.target.value);
   };
 
   const handleEnterKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -72,7 +74,7 @@ const SearchPanel = () => {
   return (
     <div className="text-center">
       <input
-        value={val}
+        value={searchValue}
         onChange={inputChange}
         onKeyDown={handleEnterKey}
         type="text"

@@ -18,7 +18,7 @@ function Header() {
 
       <div className="music-player">
         <audio controls>
-          <source src="src/assets/Cha.mp3" type="audio/mpeg" />
+          <source src="../audio/Cha.mp3" type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
       </div>
