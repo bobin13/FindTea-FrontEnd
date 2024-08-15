@@ -6,8 +6,8 @@ import NavBar from "./components/NavBar";
 function App() {
   return (
     <div className="">
-      <NavBar></NavBar>
-      <hr />
+      <Header />
+
       <SearchPanel></SearchPanel>
       <Footer></Footer>
     </div>

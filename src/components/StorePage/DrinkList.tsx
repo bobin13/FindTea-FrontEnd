@@ -15,7 +15,7 @@ interface Props {
 const DrinkList = ({ drinks }: Props) => {
   console.log();
   return (
-    <ul className="drink-list">
+    <ul className="drinks-list">
       {drinks?.map((drink, index) => (
         <DrinkItem drink={drink} key={drink.id}></DrinkItem>
       ))}

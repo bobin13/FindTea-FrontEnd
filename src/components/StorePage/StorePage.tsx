@@ -73,7 +73,7 @@ function StorePage() {
         </div>
       </div>
       <hr />
-      <div className="d-flex flex-column card">
+      <div className="d-flex flex-column ">
         <h3>Drinks: {store?.drinks!.length}</h3>
         <DrinkList drinks={store?.drinks!}></DrinkList>
       </div>

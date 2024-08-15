@@ -23,7 +23,7 @@ const Card = (props: any) => {
   };
 
   return (
-    <li className="list-item">
+    <li className="list-item fade-in">
       <div
         onClick={handleCardClick}
         data-id={store.id}

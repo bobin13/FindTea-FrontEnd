@@ -50,7 +50,7 @@ const SearchPanel = () => {
   }
 
   if (error) {
-    return <img className="col-12" src="src/assets/error_shibu.jpeg"></img>;
+    return <img className="col-12" src="../images/error_shibu.jpeg"></img>;
   }
 
   //search button press event handler
@@ -73,6 +73,9 @@ const SearchPanel = () => {
 
   return (
     <div className="text-center">
+      <video autoPlay loop muted play-inline className="video-backdrop">
+        <source src="../video/tea-backdrop-video.mp4" type="video/mp4" />
+      </video>
       <input
         value={searchValue}
         onChange={inputChange}
