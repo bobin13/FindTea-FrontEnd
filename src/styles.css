@@ -22,6 +22,9 @@ font-family: "Oswald", sans-serif;
 a{
     color: #EADBC8;
 }
+.main-panel{
+
+}
 .card{
     background: linear-gradient(
        to left,#4F4A45 ,#6C5F5B
@@ -38,25 +41,29 @@ a{
 }
 .ratingDiv{
     
-   
-}
-.ratingDiv > p{
+    margin: 0 10px 0 5px;
+    width: 100px;
+    height: 58px;
+    border-radius: 5px;
     font-size: 2.5em;
-    padding: 5px 15px 5px 15px;
     background: #EADBC8;
     color: #ED7D31;
-    border-radius: 5px;
+    border: #ED7D31 solid 2px;
+}
+.ratingDiv > p{
     
     
 }
 
 .cardThumbnail{
-    border: #EADBC8 solid 1px;
-    
+    border: #ED7D31 solid 4px;
+    width: 100px;
+    border-radius: 10px;
 }
 
 .addressBox{
     margin: 0 5px 0 5px;
+    text-align: start;
 }
 
 .navBar{
@@ -171,7 +178,7 @@ a{
   }
 
   .video-backdrop{
-    position: absolute;
+    position: fixed;
     top: 0px;
     left:0px;
     opacity: 40%;
@@ -183,4 +190,5 @@ a{
 *, *::before, *::after {
     box-sizing:content-box;
 }
+
 

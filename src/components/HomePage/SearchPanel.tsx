@@ -14,7 +14,7 @@ const BASE_URL = " http://localhost:5081/api/Store";
 const SearchPanel = () => {
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState("london");
   const [stores, setStores] = useState<Store[]>([]);
 
   const abortControllerRef = useRef<AbortController | null>(null);
@@ -26,7 +26,7 @@ const SearchPanel = () => {
 
     try {
       const response = await fetch(
-        `${BASE_URL}/find?cityQuery=${searchValue}`,
+        `${BASE_URL}/find?cityQuery=${searchValue.toLowerCase()}`,
         {
           signal: abortControllerRef.current?.signal,
         }
@@ -72,7 +72,7 @@ const SearchPanel = () => {
   };
 
   return (
-    <div className="text-center">
+    <div className="text-center main-panel">
       <video autoPlay loop muted play-inline className="video-backdrop">
         <source src="../video/tea-backdrop-video.mp4" type="video/mp4" />
       </video>
