@@ -2,7 +2,13 @@ import { useState } from "react";
 import Card from "./Card";
 
 interface Store {
-  id: string;
+  _id: {
+    pid: number;
+    increment: number;
+    machine: number;
+    timestamp: number;
+    creationTime: string;
+  };
   store_name: string;
   city: string;
   address: string;
@@ -18,7 +24,7 @@ function ListGroup({ stores }: Props) {
     <>
       <ul className="list-group">
         {stores.map((store, index) => (
-          <Card item={store} key={store.id}></Card>
+          <Card item={store} key={store._id.pid}></Card>
         ))}
       </ul>
     </>

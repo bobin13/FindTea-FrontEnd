@@ -23,7 +23,7 @@ interface Store {
 function StorePage() {
   const params = useParams();
   const [storeUrl, setStoreUrl] = useState(
-    " http://localhost:5081/api/Store/id"
+    " http://localhost:5081/api/Stores/id"
   );
   const [store, setStore] = useState<Store>();
   const navigate = useNavigate();

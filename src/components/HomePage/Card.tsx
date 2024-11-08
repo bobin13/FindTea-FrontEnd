@@ -4,7 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 const Card = (props: any) => {
   interface Store {
-    id: string;
+    _id: {
+      pid: number;
+      increment: number;
+      machine: number;
+      timestamp: number;
+      creationTime: string;
+    };
     store_name: string;
     city: string;
     address: string;
@@ -26,7 +32,7 @@ const Card = (props: any) => {
     <li className="list-item fade-in">
       <div
         onClick={handleCardClick}
-        data-id={store.id}
+        data-id={store._id.pid}
         className="d-flex flex-row align-items-center card m-2"
       >
         <div className="col-3 p-1">

@@ -5,9 +5,8 @@ import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <div className="">
-      <Header />
-
+    <div className="main-content">
+      <Header></Header>
       <SearchPanel></SearchPanel>
       <Footer></Footer>
     </div>

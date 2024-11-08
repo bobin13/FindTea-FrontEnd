@@ -4,27 +4,46 @@
     --primary-text: #EADBC8;
     --secondary: #ffffff;
     --secondary-text: #ffffff;
-
     --width-mobile: 400px;
+ 
   }
 
 body{
-    background: var(--background);
-    color: var(--primary-text);
+    margin: auto;
+    color: white;
     overflow-y: auto;
     height: auto;
-
+    
 font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   text-transform: uppercase;
 }
+.image-backdrop{
+    position: fixed;
+    top: 0px;
+    left:0px;
+    z-index: -1;
+    width: 100%;
+    
+  }
+  .image-overlay{
+    position: fixed; /* Sit on top of the page content */
+  /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: -1; 
+  cursor: pointer;
+  }
 a{
     color: #EADBC8;
 }
-.main-panel{
 
-}
 .card{
     background: linear-gradient(
        to left,#4F4A45 ,#6C5F5B
@@ -50,10 +69,7 @@ a{
     color: #ED7D31;
     border: #ED7D31 solid 2px;
 }
-.ratingDiv > p{
-    
-    
-}
+
 
 .cardThumbnail{
     border: #ED7D31 solid 4px;
@@ -73,40 +89,6 @@ a{
     list-style: none;
     padding-left: 0;
     
-}
-@keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-.music-player{
-    margin: 5px;
-    background-color: #6C5F5B;
-    border-radius: 50px;
-    display: inline-block;
-    text-align: center;
-           
-            
-}
-.music-player-spin{
-    animation: spin 4s linear infinite;
-}
-.music-player img{
-    width: 100px;
-    border-radius: 50px;
-    border: #ae7c3c 1px solid;
-    box-shadow: 3px 3px 3px #4F4A45;
-}
-.music-player-container {
-    margin: 5px 5px 0 5px;
-    align-self: center;
-    background: #4F4A45;
-    opacity: 90%;
-    border-radius: 5px;
-    padding: 5px 5px 0 5px;
 }
 
 .navBar > li{
@@ -177,18 +159,22 @@ a{
     }
   }
 
-  .video-backdrop{
-    position: fixed;
-    top: 0px;
-    left:0px;
-    opacity: 40%;
-    z-index: -1;
-    width: 100%;
-    
-  }
-
 *, *::before, *::after {
     box-sizing:content-box;
 }
+
+  @media only screen and (min-width: 600px) and (max-width:800px) {
+    body {
+      width: 80%;
+      
+    }
+  }
+
+  @media only screen and (min-width: 800px) {
+    body {
+      width: 60%;
+      
+    }
+  }
 
 
