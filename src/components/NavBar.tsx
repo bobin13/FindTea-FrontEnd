@@ -7,7 +7,7 @@ function NavBar() {
   };
   return (
     <>
-      <ul className="navBar">
+      <ul className="navBar font-custom">
         <li>
           <Link to={"/"}>Home</Link>
         </li>

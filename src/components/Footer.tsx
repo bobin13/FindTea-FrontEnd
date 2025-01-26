@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="text-center fixed-bottom">
+    <footer className="bottom-0 fixed right-5">
       <p>&copy; {new Date().getFullYear()} Find Tea</p>
     </footer>
   );

@@ -1,13 +1,13 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import SearchPanel from "./components/HomePage/SearchPanel";
-import NavBar from "./components/NavBar";
+import SearchPanel from "./pages/HomePage/Home";
+import Home from "./pages/HomePage/Home";
 
 function App() {
   return (
-    <div className="main-content">
+    <div className="text-white">
       <Header></Header>
-      <SearchPanel></SearchPanel>
+      <Home></Home>
       <Footer></Footer>
     </div>
   );

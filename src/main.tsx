@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import "bootstrap/dist/css/bootstrap.css";
 import ErrorPage from "./components/ErrorPage";
-import StorePage from "./components/StorePage/StorePage";
+import StorePage from "./pages/StorePage/StorePage";
+import "./index.css";
 
 const router = createBrowserRouter([
   {
