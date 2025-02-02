@@ -3,13 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const Card = (props: any) => {
   interface Store {
-    _id: {
-      pid: number;
-      increment: number;
-      machine: number;
-      timestamp: number;
-      creationTime: string;
-    };
+    id: string;
     store_name: string;
     city: string;
     address: string;
@@ -21,45 +15,58 @@ const Card = (props: any) => {
   const navigate = useNavigate();
   const handleCardClick = (event: React.MouseEvent<HTMLDivElement>) => {
     const id = (event.currentTarget as HTMLDivElement).getAttribute("data-id");
+
     if (id) {
-      console.log(store._id.valueOf());
       navigate("/store/" + id);
     }
   };
 
   return (
-    <li className="list-item animate-fadeIn rounded-md border-s-white border-2 items-center flex-row p-2 m-2 bg-black bg-opacity-50">
-      <div
-        onClick={handleCardClick}
-        data-id={store._id}
-        className="flex flex-row justify-between"
-      >
-        <div className="bg-opacity-100 flex-1">
+    <li
+      onClick={handleCardClick}
+      data-id={store.id}
+      className="animate-fadeIn cursor-pointer rounded-lg border border-gray-700 bg-gray-900/80 hover:shadow-lg hover:shadow-teal-400/50 transition-all duration-200 transform hover:scale-105 p-4 m-2"
+    >
+      {/* Store Name */}
+      <h4 className="text-2xl font-bold text-center text-teal-300 mb-3">
+        {store.store_name}
+      </h4>
+
+      {/* Store Content */}
+      <div className="flex items-center justify-between">
+        {/* Store Image */}
+        <div className="flex-1">
           <img
-            className="rounded h-[110px] animate-fadeIn"
+            className="rounded-lg h-[100px] object-cover border border-gray-700 shadow-md"
             src="../images/tim_logo.jpg"
-            alt="Image"
+            alt="Store Logo"
           />
         </div>
-        <div className="flex-1">
-          <h4 className="">{store.store_name}</h4>
-          <p className="text-2xl font-semibold ml-2">
-            <span></span>
-            <span>{store.city}</span>
+
+        {/* Store Details */}
+        <div className="flex-1 text-gray-300">
+          <p className="text-lg">
+            <span className="font-semibold text-teal-400">📍{store.city}</span>{" "}
           </p>
         </div>
+
+        {/* Store Rating */}
         <div className="flex flex-1 items-center justify-center">
-          <p className="text-6xl font-semibold">{store.rating}</p>
+          <p className="text-4xl font-bold text-yellow-400">{store.rating}</p>
         </div>
       </div>
-      <div className="flex flex-row m-1 mt-2 border-s-white border-2 rounded-md items-center justify-center">
-        <img
-          className="h-6 bg-green-600 rounded-xl m-1"
-          src="../images/location-indicator.svg"
-          alt="location"
-        />
-        <p className="text-xl">{store.address} (2km) </p>
+      <div className="p-1">
+        <p className="tracking-tighter">Address: {store.address}</p>
       </div>
+      {/* Google Maps Link */}
+      <a
+        href={`https://www.google.com/maps/search/${store.store_name}+${store.address},${store.city}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block mt-4 text-center text-lg font-semibold text-gray-200 bg-teal-600/80 hover:bg-teal-500 transition-all duration-200 rounded-md py-2"
+      >
+        View on Maps 📍
+      </a>
     </li>
   );
 };

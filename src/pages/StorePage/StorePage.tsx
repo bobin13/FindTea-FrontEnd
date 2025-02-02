@@ -13,6 +13,7 @@ interface Drink {
 }
 interface Store {
   id: string;
+  name: string;
   store_name: string;
   city: string;
   address: string;
@@ -22,17 +23,16 @@ interface Store {
 
 function StorePage() {
   const params = useParams();
-  const [storeUrl, setStoreUrl] = useState(
-    " http://localhost:5081/api/v1/Stores/id"
-  );
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const [storeUrl, setStoreUrl] = useState(`${BASE_URL}/Stores/id`);
   const [store, setStore] = useState<Store>();
   const navigate = useNavigate();
 
   async function GetStore() {
     try {
-      const response = await fetch(`${storeUrl}?id=${params.id}`);
+      const response = await fetch(`${storeUrl}/${params.id}`);
       const store = await response.json();
-      console.log(store.drinks);
+      console.log(store);
       setStore(store);
     } catch (e) {
     } finally {
@@ -59,23 +59,46 @@ function StorePage() {
   }, []);
 
   return (
-    <div className="m-2">
+    <div className="font-custom">
       <NavBar />
-      <div className="d-flex flex-row flex-center">
-        <div className="store-image-div d-flex flex-column text-center">
-          <img className="" src="../images/tim_logo.jpg" alt="" />
-          <p className="store-image-text">Tim Hortons</p>
+      <div className="flex flex-col items-center p-6 min-h-screen bg-gray-900 text-white">
+        {/* Store Image & Name */}
+        <div className="flex flex-col items-center bg-gray-800/50 backdrop-blur-md shadow-lg rounded-lg p-6 w-full max-w-md">
+          <img
+            className="w-32 h-32 object-contain rounded-lg shadow-md border-2 border-gray-600"
+            src="../images/tim_logo.jpg"
+            alt="Store Logo"
+          />
+          <p className="mt-4 text-2xl font-bold text-gray-200">
+            {store?.store_name}
+          </p>
         </div>
-        <div className="p-4">
-          <p>City: {store?.city}</p>
-          <p>Address:{store?.address}</p>
-          <p className="rating-store-page"> Rating: {store?.rating}/10</p>
+
+        {/* Store Details */}
+        <div className="mt-6 bg-gray-800/50 backdrop-blur-md shadow-lg rounded-lg p-6 w-full max-w-md">
+          <p className="text-lg text-gray-300">
+            <span className="font-semibold text-teal-400">📍 City:</span>{" "}
+            {store?.city}
+          </p>
+          <p className="text-lg text-gray-300">
+            <span className="font-semibold text-teal-400">🏠 Address:</span>{" "}
+            {store?.address}
+          </p>
+          <p className="text-lg text-gray-300">
+            <span className="font-semibold text-yellow-400">⭐ Rating:</span>{" "}
+            {store?.rating}/10
+          </p>
         </div>
-      </div>
-      <hr />
-      <div className="d-flex flex-column ">
-        <h3>Drinks: {store?.drinks!.length}</h3>
-        <DrinkList drinks={store?.drinks!}></DrinkList>
+
+        <hr className="w-full max-w-md my-6 border-gray-700" />
+
+        {/* Drinks Section */}
+        <div className="w-full max-w-md bg-gray-800/50 backdrop-blur-md shadow-lg rounded-lg p-6">
+          <h3 className="text-xl font-semibold text-purple-400">
+            🥤 Drinks: {store?.drinks! != null ? store?.drinks!.length : 0}
+          </h3>
+          <DrinkList drinks={store?.drinks!} />
+        </div>
       </div>
     </div>
   );
