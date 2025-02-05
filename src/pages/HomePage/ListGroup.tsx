@@ -16,7 +16,7 @@ interface Props {
 function ListGroup({ stores }: Props) {
   return (
     <>
-      <ul className="list-group">
+      <ul className="list-group mb-[80px]">
         {stores.map((store, index) => (
           <Card item={store} key={store.id}></Card>
         ))}
