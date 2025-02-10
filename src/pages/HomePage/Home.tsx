@@ -16,9 +16,11 @@ const STORES_URL = import.meta.env.VITE_ENDPOINT_STORES;
 const Home = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [searchValue, setSearchValue] = useState("london");
+  const [searchValue, setSearchValue] = useState("");
   const [stores, setStores] = useState<Store[]>([]);
-  const [backgroundImage, setBackgroundImage] = useState("");
+
+  const [suggestions, setSuggestions] = useState(new Set());
+  const [city, setCity] = useState("");
 
   const abortControllerRef = useRef<AbortController | null>(null);
 
@@ -53,11 +55,31 @@ const Home = () => {
   const handleSearch = () => {
     if (searchValue.trim() !== "") {
       Search();
+      const suggestions = localStorage.getItem("suggestions");
+      console.log("suggestions:" + suggestions);
+
+      if (suggestions != null) {
+        const list = new Set(suggestions);
+        list.add(searchValue.trim());
+        setSuggestions(list);
+        console.log("The local storage items:");
+
+        console.log(list);
+
+        localStorage.setItem("suggestions", JSON.stringify(list));
+      } else {
+        const list = new Set();
+        list.add(searchValue.trim());
+        localStorage.setItem("suggestions", JSON.stringify(list));
+      }
     }
   };
 
   // Input change handler
   const inputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event == null) {
+      setSearchValue(city);
+    }
     setSearchValue(event.target.value);
   };
 
@@ -70,17 +92,48 @@ const Home = () => {
 
   // Detect if mobile device
   useEffect(() => {
-    setBackgroundImage(
-      /Mobi/i.test(window.navigator.userAgent)
-        ? "../images/tea-cup.png"
-        : "../images/background-desktop.jpg"
-    );
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          getCityFromCoordinates(latitude, longitude);
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
   }, []);
+  useEffect(() => {
+    if (city) {
+      setSearchValue(city);
+    }
+  }, [city]);
+
+  const getCityFromCoordinates = async (lat: number, lon: number) => {
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
+      );
+      const data = await response.json();
+      setCity(
+        data.address.city ||
+          data.address.town ||
+          data.address.village ||
+          "Unknown"
+      );
+    } catch (error) {
+      console.error("Error fetching city data:", error);
+    }
+  };
 
   return (
     <div className="relative font-custom flex flex-col items-center min-h-screen bg-gray-900 text-white">
       {/* Search Section */}
-      <div className="mt-12 flex flex-col items-center w-full max-w-lg px-4">
+      <div className="mt-8 flex flex-col items-center w-full max-w-lg px-4">
+        <p className="mb-1">{!city ? "locating your city!..." : ""}</p>
         <input
           value={searchValue}
           onChange={inputChange}
@@ -89,6 +142,17 @@ const Home = () => {
           className="w-full p-3 rounded-lg text-lg text-gray-200 bg-gray-800 bg-opacity-60 focus:outline-none focus:ring-2 focus:ring-teal-400 placeholder-gray-400"
           placeholder="Enter a City..."
         />
+        {/*<div className="flex flex-row w-full justify-between pt-2 px-2">
+          <button className="text-center bg-teal-600 hover:bg-teal-500 text-white font-semibold rounded-xl px-2 transition duration-200 shadow-lg">
+            London
+          </button>
+          <button className="text-center bg-teal-600 hover:bg-teal-500 text-white font-semibold rounded-xl px-2 transition duration-200 shadow-lg">
+            Brampton
+          </button>
+          <button className="text-center bg-teal-600 hover:bg-teal-500 text-white font-semibold rounded-xl px-2 transition duration-200 shadow-lg">
+            Ottawa
+          </button>
+        </div> */}
         <button
           onClick={handleSearch}
           className="mt-3 flex items-center justify-center w-full bg-teal-600 hover:bg-teal-500 text-white font-semibold p-3 rounded-lg transition duration-200 shadow-lg"
