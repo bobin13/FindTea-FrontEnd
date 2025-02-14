@@ -133,7 +133,9 @@ const Home = () => {
     <div className="relative font-custom flex flex-col items-center min-h-screen bg-gray-900 text-white">
       {/* Search Section */}
       <div className="mt-8 flex flex-col items-center w-full max-w-lg px-4">
-        <p className="mb-1">{!city ? "locating your city!..." : ""}</p>
+        <p className="mb-1 animate-pulse">
+          {!city ? "locating your city!..." : ""}
+        </p>
         <input
           value={searchValue}
           onChange={inputChange}
