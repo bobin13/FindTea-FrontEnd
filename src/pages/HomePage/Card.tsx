@@ -52,7 +52,8 @@ const Card = (props: any) => {
 
         {/* Store Rating */}
         <div className="flex flex-1 items-center justify-center">
-          <p className="text-4xl font-bold text-yellow-400">{store.rating}</p>
+          <p className="text-5xl font-bold text-yellow-400">{store.rating}</p>
+          <p className="pt-5 text-xl">/10</p>
         </div>
       </div>
       <div className="p-1">

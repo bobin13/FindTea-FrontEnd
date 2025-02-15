@@ -14,9 +14,9 @@ interface Props {
 
 const DrinkItem = ({ drink }: Props) => {
   return (
-    <div className="drinks-list-item">
+    <div className="drinks-list-item font-semibold flex flex-row justify-between bg-gray-900 rounded-md p-1 px-3 mb-1 shadow-md">
       <p>{drink?.drink_name}</p>
-      <p className="fs-4">{drink?.drink_rating}/10</p>
+      <p className="text-yellow-400 text-xl ">{drink?.drink_rating}</p>
     </div>
   );
 };
