@@ -1,4 +1,4 @@
-import { Search, Heart, User } from "lucide-react"; // Import icons
+import { Search, Heart, User, CirclePlus } from "lucide-react"; // Import icons
 import { useNavigate } from "react-router-dom";
 
 function Footer() {
@@ -14,6 +14,13 @@ function Footer() {
         >
           <Search className="w-7 h-7 text-teal-400" />
           <p className="text-xs mt-1">Search</p>
+        </button>
+        <button
+          onClick={() => navigate("/addStore")}
+          className="flex flex-col items-center text-gray-200 transition-all hover:text-white hover:scale-110 active:scale-90"
+        >
+          <CirclePlus className="w-7 h-7 text-orange-400"></CirclePlus>
+          <p className="text-xs mt-1">Add Store</p>
         </button>
 
         {/* Favorites Button */}

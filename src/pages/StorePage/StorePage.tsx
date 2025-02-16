@@ -2,6 +2,7 @@ import { useParams, useNavigate, renderMatches } from "react-router-dom";
 import { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar";
 import DrinkList from "./DrinkList";
+import UserReview from "./UserReview";
 
 interface Drink {
   id: number;
@@ -86,7 +87,10 @@ function StorePage() {
           </p>
           <p className="text-lg text-gray-300">
             <span className="font-semibold text-yellow-400">⭐ Rating:</span>{" "}
-            {store?.rating}/10
+            <span className="text-yellow-400 text-2xl font-semibold">
+              {store?.rating}
+            </span>
+            <span>/10</span>
           </p>
         </div>
 
@@ -95,9 +99,28 @@ function StorePage() {
         {/* Drinks Section */}
         <div className="w-full max-w-md bg-gray-800/50 backdrop-blur-md shadow-lg rounded-lg p-6">
           <h3 className="text-xl font-semibold text-purple-400">
-            🥤 Drinks: {store?.drinks! != null ? store?.drinks!.length : 0}
+            🥤Drinks: {store?.drinks! != null ? store?.drinks!.length : 0}
           </h3>
           <DrinkList drinks={store?.drinks!} />
+        </div>
+
+        {/* Review Section */}
+        <div className="w-full max-w-md bg-gray-800/50 backdrop-blur-md shadow-lg rounded-lg p-6 mt-6">
+          <h3 className="text-xl font-semibold text-orange-400">Reviews:</h3>
+          <ul className="mt-1">
+            <UserReview
+              username={"Bobinn"}
+              rating={6}
+              comment={'"Average Tea at best!"'}
+              date={"monday"}
+            ></UserReview>
+            <UserReview
+              username={"Jobann"}
+              rating={5}
+              comment={'"Fuddu Cha BC!!!"'}
+              date={"Tueday, 10th feb"}
+            ></UserReview>
+          </ul>
         </div>
       </div>
     </div>

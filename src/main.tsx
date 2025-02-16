@@ -5,6 +5,7 @@ import App from "./App";
 import ErrorPage from "./components/ErrorPage";
 import StorePage from "./pages/StorePage/StorePage";
 import "./index.css";
+import AddStore from "./pages/AddStorePage/AddStore";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
   {
     path: "/search/:searchInput",
     element: <App />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/addStore",
+    element: <AddStore />,
     errorElement: <ErrorPage />,
   },
 ]);

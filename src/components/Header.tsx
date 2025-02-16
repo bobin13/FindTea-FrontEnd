@@ -1,4 +1,5 @@
 import { Coffee } from "lucide-react"; // Importing Coffee icon
+import NavBar from "./NavBar";
 
 function Header() {
   return (

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ListGroup from "./ListGroup";
 import { Search, AlertTriangle } from "lucide-react"; // Icons
+import NavBar from "../../components/NavBar";
 
 interface Store {
   id: string;
